@@ -29,6 +29,34 @@ class Net {
 
     OperatorDef* add_cout_op(const std::vector<std::string>& aprams);
 
+    OperatorDef* add_zero_one_op(const std::string& pred,
+                                 const std::string& label);
+
+    OperatorDef* add_show_worst_op(const std::string& pred,
+                                   const std::string& label,
+                                   const std::string& data,
+                                   float scale=1.0,
+                                   float mean=128.0);
+
+    OperatorDef* add_time_plot_op(const std::string& data,
+                                  const std::string& iter="",
+                                  const std::string& label="",
+                                  unsigned step=0);
+
+    OperatorDef* add_ensure_cpu_output_op(const std::string& input,
+                                          const std::string& output);
+
+    OperatorDef* add_copy_from_cpu_input_op(const std::string& input,
+                                            const std::string& output);
+
+    OperatorDef* add_copy_op(const std::string& input,
+                             const std::string& output);
+
+    OperatorDef* add_create_mutex_op(const std::string& param);
+
+    OperatorDef* add_print_op(const std::string& param,
+                              bool to_file=false);
+
     void set_name(const std::string name);
     void set_type(const std::string type);
     void set_fill_to_train();
