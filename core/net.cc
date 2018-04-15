@@ -98,6 +98,18 @@ class Net {
     OperatorDef* add_given_tensor_fill_op(const TensorCPU& tensor,
                                           const std::string& name);
 
+    OperatorDef* add_conv_op(const std::string& input,
+                             const std::string& w,
+                             const std::string& b,
+                             const std::string& output,
+                             int stride,
+                             int padding,
+                             int kernel,
+                             int group=0,
+                             const std::string& order="NCHW");
+
+    OperatorDef* add_relu_op(const std::string& input,
+                             const std::string& output);
 
     void set_name(const std::string name);
     void set_type(const std::string type);
