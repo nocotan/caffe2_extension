@@ -2,6 +2,7 @@
 #define CAFFE2_EXTENSION_CORE_NET_HH
 
 #include <string>
+#include <vector>
 
 #include <caffe2/core/operator.h>
 
@@ -59,6 +60,44 @@ class Net {
 
     OperatorDef* add_summarize_op(const std::string& param,
                                   bool to_file=false);
+
+    OperatorDef* add_constant_fill_op(const std::vector<int>& shape,
+                                      const std::string& param);
+
+    OperatorDef* add_constant_fill_op(const std::vector<int>& shape,
+                                      float value,
+                                      const std::string& param);
+
+    OperatorDef* add_constant_fill_op(const std::vector<int>& shape,
+                                      int64_t value,
+                                      const std::string& param);
+
+    OperatorDef* add_constant_fill_with_op(float value,
+                                           const std::string& input,
+                                           const std::string& output);
+
+    OperatorDef* add_xavier_fill_op(const std::vector<int>& shape,
+                                    const std::string& param);
+
+    OperatorDef* add_msra_fill_op(const std::vector<int>& shape,
+                                  const std::string& param);
+
+    OperatorDef* add_uniform_fill_op(const std::vector<int>& shape,
+                                     float min,
+                                     float max,
+                                     const std::string& param);
+
+    OperatorDef* add_gausian_fill_op(const std::vector<int>& shape,
+                                     float mean,
+                                     float std,
+                                     const std::string& param);
+
+    OperatorDef* add_vector_fill_op(const std::vector<int>& values,
+                                    const std::string& name);
+
+    OperatorDef* add_given_tensor_fill_op(const TensorCPU& tensor,
+                                          const std::string& name);
+
 
     void set_name(const std::string name);
     void set_type(const std::string type);
