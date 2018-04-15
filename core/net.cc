@@ -111,6 +111,59 @@ class Net {
     OperatorDef* add_relu_op(const std::string& input,
                              const std::string& output);
 
+    OperatorDef* add_leaky_relu_op(const std::string& input,
+                                   const std::string& output,
+                                   float alpha);
+    OperatorDef* add_sigmoid_op(const std::string& input,
+                                const std::string& output);
+
+    OperatorDef* add_lrn_op(const std::string& input,
+                            const std::string& output,
+                            int size,
+                            float alpha,
+                            float beta,
+                            float bias,
+                            const std::string& order="NCHW");
+
+    OperatorDef* add_maxpool_op(const std::string& input,
+                                const std::string& output,
+                                int stride,
+                                int padding,
+                                int kernel,
+                                const std::string& order="NCHW");
+
+    OperatorDef* add_averagepool_op(const std::string& input,
+                                    const std::string& output,
+                                    int stride,
+                                    int padding,
+                                    int kernel,
+                                    const std::string& order="NCHW");
+
+    OperatorDef* add_fc_op(const std::string& input,
+                           const std::string& w,
+                           const std::string& b,
+                           const std::string& output,
+                           int axis=1);
+
+    OperatorDef* add_dropout_op(const std::string& input,
+                                const std::string& output,
+                                float p);
+
+    OperatorDef* add_softmax_op(const std::string& input,
+                                const std::string& output,
+                                int axis=1);
+
+    OperatorDef* add_concat_op(const std::vector<std::string>& inputs,
+                               const std::string& output,
+                               const std::string& order="NCHW");
+
+    OperatorDef* add_spatial_bn_op(const std::vector<std::string>& inputs,
+                                   const std::vector<std::string>& outputs,
+                                   float epsilon = 1e-5f,
+                                   float momentum = 0.9,
+                                   bool test=false,
+                                   const std::string& order="NCHW");
+
     void set_name(const std::string name);
     void set_type(const std::string type);
     void set_fill_to_train();
