@@ -164,6 +164,41 @@ class Net {
                                    bool test=false,
                                    const std::string& order="NCHW");
 
+    OperatorDef* add_mul_op(const std::vector<std::string>& inputs,
+                            const std::string& output,
+                            int axis=1,
+                            int broadcast=1);
+
+    OperatorDef* add_add_op(const std::vector<std::string>& inputs,
+                            const std::string& output,
+                            int axis=1,
+                            int broadcast=1);
+
+    OperatorDef* add_lstm_unit_op(const std::vector<std::string>& inputs,
+                                  const std::vector<std::string>& outputs,
+                                  int drop_states=0,
+                                  float forget_bias=0.f);
+
+    OperatorDef* add_rnn_op(const std::string& seq_lengths,
+                            const std::string& hidden_init,
+                            const std::string& cell_init,
+                            const std::string& scope,
+                            const std::string& hidden_output,
+                            const std::string& cell_state,
+                            bool force_cpu);
+
+    OperatorDef* add_accuracy_op(const std::string& pred,
+                                 const std::string& label,
+                                 const std::string& accuracy,
+                                 int top_k=0);
+
+    OperatorDef* add_label_crossentropy_op(const std::string& pred,
+                                           const std::string& label,
+                                           const std::string& xent);
+
+    OperatorDef* add_averaged_loss_op(const std::string& input,
+                                      const std::string& loss);
+
     void set_name(const std::string name);
     void set_type(const std::string type);
     void set_fill_to_train();
