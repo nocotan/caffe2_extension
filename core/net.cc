@@ -57,6 +57,9 @@ class Net {
     OperatorDef* add_print_op(const std::string& param,
                               bool to_file=false);
 
+    OperatorDef* add_summarize_op(const std::string& param,
+                                  bool to_file=false);
+
     void set_name(const std::string name);
     void set_type(const std::string type);
     void set_fill_to_train();
